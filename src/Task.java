@@ -1,21 +1,23 @@
-import java.util.concurrent.TimeUnit;
-
+/**
+ * Implementation of the task to be executed by a thread
+ * @author <a href="mailto:everton.cavalcante@ufrn.br">Everton Cavalcante</a>
+ */
 public class Task implements Runnable {
-	
-	private String id;
-	
+	/** Task ID */
+	private final String id;
+
+	/**
+	 * Parameterized constructor
+	 * @param id Task ID
+	 */
 	public Task(String id) {
 		this.id = id;
 	}
 
+	/** Task statements */
 	@Override
 	public void run() {
-		System.out.println("Thread " + id + " executing");
-		try {
-			int duration = (int) (Math.random() * 5) + 1;
-			TimeUnit.SECONDS.sleep(duration);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		System.out.println("Thread " + Thread.currentThread().getId() +
+				" executing task " + id);
 	}
 }
